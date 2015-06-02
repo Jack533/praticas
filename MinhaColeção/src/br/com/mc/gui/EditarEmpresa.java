@@ -277,7 +277,7 @@ public class EditarEmpresa extends javax.swing.JDialog {
         }
         
         else if(novaLoja != loja.getId()){
-            facade.editaRelacaoEmp(idMidia, est.getId(), novaLoja);
+            facade.editaRelacaoEmp(idMidia, loja.getId(), novaLoja);
             JOptionPane.showMessageDialog(null, MensagensUtil.getValor(MensagensUtil.MSG_EDITADO, " Loja "));
             
         }

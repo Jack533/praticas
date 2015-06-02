@@ -6,9 +6,13 @@
 package br.com.mc.gui;
 
 
+import br.com.mc.relatorios.RelatoriosMidia;
 import java.awt.Cursor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -19,6 +23,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    public static String controle = "";
+    
     public TelaPrincipal() {
         
         try {
@@ -39,7 +45,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -60,6 +65,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FS Versão BETA 2.0");
@@ -73,17 +82,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mc/imagens/icone_top10serie.png"))); // NOI18N
-        jButton2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Top 10 Séries", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 140, 120));
-
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mc/imagens/icone_comprafutura.png"))); // NOI18N
         jButton3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Compras Futuras", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM));
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -93,7 +91,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 140, 120));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 140, 120));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mc/imagens/icone_adicionarmidia.png"))); // NOI18N
         jButton4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adicionar Mídia", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM));
@@ -104,7 +102,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 140, 120));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 140, 120));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mc/imagens/icone_editarmidia.png"))); // NOI18N
         jButton5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Editar Mídia", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM));
@@ -115,7 +113,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, 140, 120));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 140, 120));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mc/imagens/icone_coleção.png"))); // NOI18N
         jButton6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Minha Coleção", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM));
@@ -126,10 +124,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 140, 120));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 140, 120));
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mc/imagens/icone_top10filmes.png"))); // NOI18N
-        jButton7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Top 10 Filmes", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM));
+        jButton7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Top 10 ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM));
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +135,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 140, 120));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 140, 120));
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mc/imagens/icone_buscarmidia.png"))); // NOI18N
         jButton8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Mídia", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM));
@@ -148,7 +146,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 10, 140, 120));
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 140, 120));
 
         backgroud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mc/imagens/tela_principal_backgroud.png"))); // NOI18N
         getContentPane().add(backgroud, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1190, 700));
@@ -218,6 +216,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu1.setText("Relatórios");
+
+        jMenuItem2.setText("Minha Coleção");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem6.setText("Por Ano de Lançamento");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem6);
+
+        jMenuItem8.setText("Por Ano de Compra");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem8);
+
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -255,12 +281,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-       
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
@@ -324,6 +344,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+     
+        RelatoriosMidia rm = new RelatoriosMidia();
+        rm.setLocal("./relatórios/RelatorioColecao.jasper");
+        
+        try {
+            rm.relatorioMinhaColecao();
+        } catch (JRException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        
+      controle = "Lançamento";  
+      RelatorioAno ra = new RelatorioAno(new javax.swing.JFrame(), true);
+      ra.setVisible(true);
+      
+      
+        
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        
+      controle = "Compra";
+      RelatorioAno ra = new RelatorioAno(new javax.swing.JFrame(), true);
+      ra.setVisible(true);
+      
+        
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -364,13 +417,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroud;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu6;
@@ -380,9 +433,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     // End of variables declaration//GEN-END:variables
 }

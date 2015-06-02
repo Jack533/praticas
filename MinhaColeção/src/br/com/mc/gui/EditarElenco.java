@@ -479,7 +479,7 @@ public class EditarElenco extends javax.swing.JDialog {
             if (profissao.equals("Ator/Atriz")) {
                 
                 if (!facade.estaRelacionado(idMidia, idArtista)) {
-                    facade.realacionaArtista(idArtista, idMidia, personagem.getText());
+                    facade.realacionaArtista(idMidia,idArtista, personagem.getText());
                     listarElenco();
                     JOptionPane.showMessageDialog(null,  MensagensUtil.getValor(MensagensUtil.MSG_ADD_ELENCO," O Ator/Atriz "));
                 } else {
@@ -489,7 +489,7 @@ public class EditarElenco extends javax.swing.JDialog {
             } else if (profissao.equals("Diretor")) {
                 
                 if (!facade.estaRelacionado(idMidia, idArtista)) {
-                    facade.realacionaArtista(idArtista, idMidia, personagem.getText());
+                    facade.realacionaArtista(idMidia,idArtista,personagem.getText());
                     listarDiretor();
                     JOptionPane.showMessageDialog(null,  MensagensUtil.getValor(MensagensUtil.MSG_ADD_ELENCO," O Diretor "));
                 } else {
@@ -499,7 +499,7 @@ public class EditarElenco extends javax.swing.JDialog {
             } else {
                 
                 if (!facade.estaRelacionado(idMidia, idArtista)) {
-                    facade.realacionaArtista(idArtista, idMidia, personagem.getText());
+                    facade.realacionaArtista( idMidia,idArtista,personagem.getText());
                     listarRoreirista();
                     JOptionPane.showMessageDialog(null, MensagensUtil.getValor(MensagensUtil.MSG_ADD_ELENCO, " O Roteirista "));
                 } else {
@@ -520,7 +520,7 @@ public class EditarElenco extends javax.swing.JDialog {
         int linha = -1;
         linha = tabela2.getSelectedRow();
         if (linha >= 0) {
-            idArtista = (Integer) tabela.getValueAt(linha, 0);
+            idArtista = (Integer) tabela2.getValueAt(linha, 0);
             facade.removeRelacionamentoArtista(idMidia, idArtista);
             JOptionPane.showMessageDialog(null,  MensagensUtil.getValor(MensagensUtil.MSG_REMOVER," Diretor "));
             listarDiretor();
@@ -536,7 +536,7 @@ public class EditarElenco extends javax.swing.JDialog {
         int linha = -1;
         linha = tabela3.getSelectedRow();
         if (linha >= 0) {
-            idArtista = (Integer) tabela.getValueAt(linha, 0);
+            idArtista = (Integer) tabela3.getValueAt(linha, 0);
             facade.removeRelacionamentoArtista(idMidia, idArtista);
             JOptionPane.showMessageDialog(null,  MensagensUtil.getValor(MensagensUtil.MSG_REMOVER," Roteirista "));
             listarRoreirista();

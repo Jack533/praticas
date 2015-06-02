@@ -197,7 +197,7 @@ public class JDBCEmpresaDAO implements EmpresaDAO {
 
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, id);
-            System.out.println(id);
+           
             ResultSet rs = st.executeQuery();
 
             if (rs != null) {
